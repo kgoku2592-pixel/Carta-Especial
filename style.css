@@ -112,6 +112,7 @@ padding:10px;
 transition:1.2s;
 z-index:2;
 box-shadow:0 8px 20px rgba(0,0,0,.2);
+transform: translateY(0);
 }
 
 .letter img{
