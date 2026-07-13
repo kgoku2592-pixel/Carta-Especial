@@ -124,9 +124,7 @@ border-radius:8px;
 transform:rotateX(180deg);
 }
 
-.envelope.open .letter{
-transform:translateY(-180px) scale(1.05);
-}
+
 
 @keyframes pulse{
 50%{
