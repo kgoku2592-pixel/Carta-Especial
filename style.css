@@ -5,60 +5,85 @@
 }
 
 body{
+    background:linear-gradient(to bottom,#fdf7ec,#f6ead3);
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
-    background:linear-gradient(to bottom,#fdf8ef,#f7edd9);
-    font-family:'Cormorant Garamond',serif;
+    font-family:Georgia,serif;
     overflow:hidden;
 }
 
 .container{
     position:relative;
-    text-align:center;
-}
-
-h1{
-    font-size:42px;
-    color:#7a5a2a;
-    margin-bottom:10px;
-}
-
-.subtitulo{
-    font-size:20px;
-    color:#8b6f47;
-    margin-bottom:30px;
-}
-
-.envelope{
-    position:relative;
-    width:320px;
-    height:220px;
-    margin:auto;
+    width:340px;
+    height:450px;
     cursor:pointer;
 }
 
-/* Parte de baixo do envelope */
-.base{
+/* CARTA (imagem) */
+.carta{
     position:absolute;
-    width:100%;
-    height:100%;
-    background:#d9b87c;
+    left:50%;
+    bottom:40px;
+    transform:translateX(-50%);
+    width:250px;
+    transition:1s ease;
+    z-index:1;
     border-radius:8px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+/* ENVELOPE */
+.envelope{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:220px;
+}
+
+/* Parte da frente */
+.frente{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:220px;
+    background:#e5c791;
+    border:3px solid #b88b3a;
+    border-radius:0 0 8px 8px;
     z-index:3;
 }
 
 /* Tampa */
-.flap{
-    .flap{
+.tampa{
     position:absolute;
+    top:0;
+    left:0;
     width:100%;
-    height:110px;
-    background:#e8c98f;
+    height:120px;
+    background:#edd9b0;
     clip-path:polygon(0 0,100% 0,50% 100%);
     transform-origin:top;
     transition:.8s;
-    z-index:5;
-    }
+    z-index:4;
+}
+
+/* Abrir tampa */
+.container.abrir .tampa{
+    transform:rotateX(180deg);
+}
+
+/* Carta sobe */
+.container.abrir .carta{
+    transform:translate(-50%,-180px);
+}
+
+.info{
+    position:absolute;
+    bottom:-45px;
+    width:100%;
+    text-align:center;
+    color:#8b6b36;
+    font-size:16px;
+}
