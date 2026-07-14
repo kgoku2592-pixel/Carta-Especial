@@ -110,11 +110,19 @@ font-size:15px;
 <body>
 
 <div class="container" onclick="abrirCarta()" id="carta">
-
 <img src="IMG-20260713-WA0000.jpg" class="carta" alt="Carta">
+    <div class="envelope">
+    <div class="tampa"></div>
+    <div class="frente"></div>
+</div>
+
+<p class="info">💌 Clique no envelope</p>
+
+</div>
+
 <script>
 function abrirCarta(){
-document.getElementById("carta").classList.toggle("abrir");
+    document.getElementById("carta").classList.toggle("abrir");
 }
 </script>
 
