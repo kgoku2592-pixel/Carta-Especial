@@ -1,189 +1,581 @@
+/* ==========================
+   RESET
+========================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:'Cinzel', serif;
+    width:100%;
     height:100vh;
     overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#f8edd5,#e6d2aa,#d7b980);
+    background:#f4e5bf;
+    font-family:'Cinzel', serif;
     position:relative;
 }
 
-/* Fundo */
+/* ==========================
+   FUNDO
+========================== */
+
 .background{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at top,#fff9e8 0%,transparent 45%),
-    linear-gradient(135deg,#f5ead1,#e8d4a2,#d7bb87);
-    z-index:-3;
+    radial-gradient(circle at top,#fff9ea 0%,transparent 40%),
+    linear-gradient(135deg,#f9efd8,#e8d0a3,#d6b57c);
+    z-index:-5;
 }
 
-/* Girassóis */
-.sunflower{
+.background::before{
+    content:"";
     position:absolute;
-    font-size:60px;
-    animation:float 4s ease-in-out infinite;
+    inset:0;
+    background-image:
+    repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 12px,
+        rgba(255,255,255,.04) 13px
+    );
+    opacity:.35;
+}
+
+/* ==========================
+   BRILHO
+========================== */
+
+.sparkles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.sparkles::before,
+.sparkles::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    border-radius:50%;
+
+    filter:blur(70px);
+
+    animation:glow 8s infinite alternate;
+
+}
+
+.sparkles::before{
+
+    top:-100px;
+
+    left:-100px;
+
+    background:rgba(255,255,180,.25);
+
+}
+
+.sparkles::after{
+
+    right:-120px;
+
+    bottom:-120px;
+
+    background:rgba(255,220,120,.18);
+
+}
+
+/* ==========================
+   GIRASSÓIS
+========================== */
+
+.sunflower{
+
+    position:absolute;
+
+    font-size:65px;
+
     user-select:none;
+
+    animation:flowerFloat 6s ease-in-out infinite;
+
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));
+
 }
 
 .sf1{
+
     top:20px;
+
     left:20px;
+
 }
 
 .sf2{
+
     top:20px;
+
     right:20px;
+
 }
 
 .sf3{
+
     bottom:20px;
+
     left:20px;
+
 }
 
 .sf4{
+
     bottom:20px;
+
     right:20px;
+
 }
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(-10px);
-    }
-}
+/* ==========================
+   CONTAINER
+========================== */
 
 .container{
+
     position:relative;
-    width:360px;
-    height:500px;
+
+    width:390px;
+
+    height:540px;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
 }
 
-/* Envelope */
+/* ==========================
+   ENVELOPE
+========================== */
 
 .envelope{
+
     position:absolute;
-    width:340px;
-    height:230px;
-    background:#efe0b8;
-    border-radius:8px;
-    box-shadow:0 20px 40px rgba(0,0,0,.3);
+
+    width:350px;
+
+    height:240px;
+
+    border-radius:10px;
+
     overflow:hidden;
-    z-index:5;
+
+    background:#ead7ad;
+
+    box-shadow:
+
+    0 25px 45px rgba(0,0,0,.28),
+
+    inset 0 0 25px rgba(255,255,255,.4);
+
+    z-index:10;
+
 }
 
-.front{
+/* textura */
+
+.envelope::before{
+
+    content:"";
+
     position:absolute;
-    width:100%;
-    height:100%;
-    background:#e6d2a2;
+
+    inset:0;
+
+    background-image:
+
+    repeating-linear-gradient(
+
+        45deg,
+
+        rgba(255,255,255,.05),
+
+        rgba(255,255,255,.05) 2px,
+
+        transparent 2px,
+
+        transparent 8px
+
+    );
+
+    opacity:.4;
+
 }
+
+/* frente */
+
+.front{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+    to bottom,
+
+    #ead8af,
+
+    #dfc592
+
+    );
+
+}
+/* ==========================
+   ABA DO ENVELOPE
+========================== */
 
 .flap{
     position:absolute;
     width:100%;
-    height:120px;
-    background:#d8bf88;
+    height:130px;
+    background:linear-gradient(
+        to bottom,
+        #e6cf9c,
+        #cfb27a
+    );
     clip-path:polygon(0 0,100% 0,50% 100%);
     transform-origin:top;
-    transition:.8s;
-    z-index:8;
+    transition:1.2s ease;
+    z-index:30;
+    box-shadow:0 8px 15px rgba(0,0,0,.15);
 }
+
+.flap::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(255,255,255,.25),
+        transparent
+    );
+}
+
+/* ==========================
+   COROA
+========================== */
 
 .crown{
     position:absolute;
     left:50%;
     top:15px;
     transform:translateX(-50%);
-    font-size:35px;
+    font-size:38px;
+    filter:
+        drop-shadow(0 2px 2px rgba(0,0,0,.2))
+        drop-shadow(0 0 8px gold);
+    animation:crownGlow 2.5s infinite alternate;
 }
 
-/* Selo */
+/* ==========================
+   SELO DE CERA
+========================== */
 
 .seal{
     position:absolute;
-    width:65px;
-    height:65px;
-    background:#9b0d18;
-    border-radius:50%;
     left:50%;
-    top:95px;
+    top:92px;
     transform:translateX(-50%);
-    border:5px solid #7d0712;
-    box-shadow:0 0 20px rgba(0,0,0,.35);
+    width:68px;
+    height:68px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at top,#d83b45,#8b0913);
+    border:5px solid #7a0810;
     cursor:pointer;
-    z-index:20;
+    z-index:40;
+    transition:.5s;
+    box-shadow:
+        0 6px 15px rgba(0,0,0,.35),
+        inset 0 3px 5px rgba(255,255,255,.25);
 }
 
 .seal::before{
     content:"❤";
     position:absolute;
-    color:white;
-    font-size:28px;
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
+    color:#fff;
+    font-size:28px;
 }
 
-/* Carta */
+.seal:hover{
+    transform:translateX(-50%) scale(1.08);
+}
+
+/* ==========================
+   CARTA
+========================== */
 
 .carta{
     position:absolute;
-    width:300px;
-    border-radius:10px;
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
+    width:310px;
+    border-radius:12px;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.35);
     bottom:90px;
     opacity:0;
-    transform:translateY(120px) scale(.8);
-    transition:1.2s;
-    z-index:2;
+    transform:translateY(120px) scale(.85);
+    transition:1.3s ease;
+    z-index:5;
 }
 
-/* Classe usada pelo JavaScript */
+/* ==========================
+   ABRIR ENVELOPE
+========================== */
 
 .aberto .flap{
     transform:rotateX(180deg);
 }
 
-.aberto .carta{
-    opacity:1;
-    transform:translateY(-170px) scale(1);
-    z-index:15;
-}
-
 .aberto .seal{
     opacity:0;
     transform:translateX(-50%) scale(0);
-    transition:.5s;
 }
 
-/* Celular */
+.aberto .carta{
+    opacity:1;
+    transform:translateY(-170px) scale(1);
+    z-index:60;
+}
+/* ==========================================
+   PARTE 3 - ANIMAÇÕES E DETALHES
+========================================== */
 
-@media(max-width:480px){
+/* Envelope mais elegante */
 
 .envelope{
-    width:300px;
-    height:200px;
+    transition:1s ease;
 }
+
+.envelope:hover{
+    transform:translateY(-5px);
+}
+
+/* Carta */
 
 .carta{
-    width:270px;
+
+    max-width:90%;
+
+    object-fit:contain;
+
+    transform-origin:center;
+
 }
 
-.sunflower{
-    font-size:45px;
+.carta:hover{
+
+    transform:scale(1.02);
+
 }
+
+/* Brilho passando */
+
+.envelope::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-40%;
+
+    width:60%;
+
+    height:350%;
+
+    background:rgba(255,255,255,.18);
+
+    transform:rotate(25deg);
+
+    animation:shine 6s linear infinite;
+
+}
+
+/* Girassóis */
+
+.sunflower{
+
+    transition
+    /* ==========================================
+   PARTE 4 - EFEITOS EXTRAS E RESPONSIVIDADE
+========================================== */
+
+/* Movimento suave dos girassóis */
+
+.sunflower{
+    transition:.4s ease;
+}
+
+.sunflower:hover{
+    transform:scale(1.15) rotate(10deg);
+    filter:
+        drop-shadow(0 0 18px rgba(255,215,0,.7))
+        drop-shadow(0 8px 15px rgba(0,0,0,.25));
+}
+
+/* Fundo com leve movimento */
+
+.background{
+    animation:backgroundMove 18s ease-in-out infinite alternate;
+}
+
+/* Carta acima de tudo quando aberta */
+
+.aberto .carta{
+    animation:letterFloat 3.5s ease-in-out infinite;
+}
+
+/* Pequeno efeito de clique */
+
+.seal:active{
+    transform:translateX(-50%) scale(.92);
+}
+
+/* Seleção desativada */
+
+.envelope,
+.carta,
+.sunflower,
+.seal,
+.crown{
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+/* Responsividade */
+
+@media (max-width:480px){
+
+    .container{
+        transform:scale(.82);
+    }
+
+    body{
+        overflow:hidden;
+    }
+
+    .sunflower{
+        font-size:52px;
+    }
+
+}
+
+/* ==========================
+   KEYFRAMES
+========================== */
+
+@keyframes backgroundMove{
+
+    0%{
+        background-position:0% 0%;
+    }
+
+    100%{
+        background-position:100% 100%;
+    }
+
+}
+
+@keyframes letterFloat{
+
+    0%{
+        transform:translateY(-170px) scale(1);
+    }
+
+    50%{
+        transform:translateY(-180px) scale(1.02);
+    }
+
+    100%{
+        transform:translateY(-170px) scale(1);
+    }
+
+}
+
+@keyframes shine{
+
+    0%{
+        top:-140%;
+        left:-50%;
+    }
+
+    100%{
+        top:140%;
+        left:120%;
+    }
+
+}
+
+@keyframes glow{
+
+    from{
+        transform:scale(1);
+        opacity:.4;
+    }
+
+    to{
+        transform:scale(1.25);
+        opacity:.75;
+    }
+
+}
+
+@keyframes flowerFloat{
+
+    0%,100%{
+        transform:translateY(0) rotate(-2deg);
+    }
+
+    50%{
+        transform:translateY(-10px) rotate(2deg);
+    }
+
+}
+
+@keyframes crownGlow{
+
+    from{
+        filter:
+            drop-shadow(0 0 5px gold)
+            drop-shadow(0 0 12px rgba(255,215,0,.4));
+    }
+
+    to{
+        filter:
+            drop-shadow(0 0 12px gold)
+            drop-shadow(0 0 25px rgba(255,215,0,.8));
+    }
 
 }
