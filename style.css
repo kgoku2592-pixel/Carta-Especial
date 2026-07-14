@@ -17,14 +17,12 @@ body{
     overflow:hidden;
     display:flex;
     justify-content:center;
-    align-items:flex-start;
-    padding-top:100px;
+    align-items:center;
     background:#f4e5bf;
     font-family:'Cinzel', serif;
     position:relative;
 }
-
-/* ==========================
+/==========================
    FUNDO
 ========================== */
 
@@ -168,7 +166,7 @@ body{
 
     align-items:center;
    
-padding-top:20px;
+   transform: translateY(20px);
 }
 
 /* ==========================
