@@ -5,8 +5,8 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Georgia,serif;
-background:linear-gradient(#fffaf0,#f7e8c5);
+font-family:'Poppins',sans-serif;
+background:linear-gradient(180deg,#fffaf2,#f4e2b7);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -19,83 +19,64 @@ text-align:center;
 }
 
 h1{
-color:#7a5529;
-font-size:38px;
+font-family:'Great Vibes',cursive;
+font-size:52px;
+color:#7d5525;
 margin-bottom:10px;
 }
 
-.subtitulo{
-color:#8a6a42;
-margin-bottom:35px;
+.texto{
 font-size:18px;
+color:#7b684d;
+margin-bottom:35px;
+padding:0 20px;
 }
 
 .envelope{
 position:relative;
-width:360px;
-height:250px;
+width:340px;
 margin:auto;
 cursor:pointer;
+transition:.5s;
 }
 
-.corpo{
-position:absolute;
-bottom:0;
+.envelope-img{
 width:100%;
-height:180px;
-background:#e5c992;
-border:2px solid #c59b55;
-border-radius:0 0 12px 12px;
-z-index:3;
-}
-
-.tampa{
-position:absolute;
-width:100%;
-height:140px;
-background:#efd7aa;
-clip-path:polygon(0 0,100% 0,50% 100%);
-transform-origin:top;
-transition:1s;
-z-index:5;
-border:2px solid #c59b55;
-}
-
-.carta-box{
-position:absolute;
-width:270px;
-left:45px;
-top:25px;
-transition:1s;
-z-index:2;
+display:block;
+filter:drop-shadow(0 15px 25px rgba(0,0,0,.25));
 }
 
 .carta{
+position:absolute;
+left:50%;
+bottom:35px;
+transform:translateX(-50%);
+width:260px;
+transition:1s;
+z-index:-1;
+}
+
+.carta img{
 width:100%;
 border-radius:10px;
 box-shadow:0 10px 25px rgba(0,0,0,.25);
-display:block;
 }
 
-.envelope.aberto .tampa{
-transform:rotateX(180deg);
+.envelope.aberto .carta{
+transform:translate(-50%,-230px);
 }
 
-.envelope.aberto .carta-box{
-transform:translateY(-180px);
-}
-
-.click{
+.clique{
 margin-top:25px;
-color:#7a5529;
 font-size:20px;
-animation:pulse 2s infinite;
+color:#7d5525;
+animation:pulsar 2s infinite;
 }
 
 .girassol{
 position:fixed;
-font-size:45px;
-animation:gira 4s infinite ease-in-out;
+font-size:42px;
+animation:girar 4s ease-in-out infinite;
 }
 
 .g1{top:20px;left:20px;}
@@ -103,43 +84,39 @@ animation:gira 4s infinite ease-in-out;
 .g3{bottom:20px;left:20px;}
 .g4{bottom:20px;right:20px;}
 
-@keyframes pulse{
-50%{transform:scale(1.08);}
+@keyframes pulsar{
+50%{
+transform:scale(1.08);
+}
 }
 
-@keyframes gira{
-0%{transform:rotate(-10deg);}
-50%{transform:rotate(10deg);}
-100%{transform:rotate(-10deg);}
+@keyframes girar{
+0%{transform:rotate(-8deg);}
+50%{transform:rotate(8deg);}
+100%{transform:rotate(-8deg);}
 }
 
 @media(max-width:600px){
 
 .envelope{
-width:320px;
-height:220px;
+width:300px;
 }
 
-.corpo{
-height:160px;
+.carta{
+width:230px;
+bottom:30px;
 }
 
-.carta-box{
-width:235px;
-left:42px;
-}
-
-.envelope.aberto .carta-box{
-transform:translateY(-160px);
+.envelope.aberto .carta{
+transform:translate(-50%,-190px);
 }
 
 h1{
-font-size:32px;
+font-size:42px;
 }
 
-.subtitulo{
-font-size:17px;
-padding:0 15px;
+.texto{
+font-size:16px;
 }
 
 }
