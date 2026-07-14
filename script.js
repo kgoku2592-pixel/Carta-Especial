@@ -1,17 +1,32 @@
-const envelope = document.getElementById("envelope");
-const carta = document.querySelector(".carta");
-const texto = document.querySelector(".clique");
+// ==========================
+// ELEMENTOS
+// ==========================
 
-envelope.addEventListener("click", () => {
+const container = document.querySelector(".container");
+const seal = document.getElementById("seal");
 
-    envelope.classList.add("abrir");
+let aberto = false;
 
-    texto.style.display = "none";
+// ==========================
+// ABRIR ENVELOPE
+// ==========================
 
-    carta.style.display = "block";
+seal.addEventListener("click", () => {
 
-    setTimeout(() => {
-        carta.classList.add("mostrar");
-    }, 150);
+    if (aberto) return;
 
+    aberto = true;
+
+    container.classList.add("aberto");
+
+});
+
+// ==========================
+// IMPEDIR ARRASTAR A IMAGEM
+// ==========================
+
+const carta = document.getElementById("carta");
+
+carta.addEventListener("dragstart", (e) => {
+    e.preventDefault();
 });
