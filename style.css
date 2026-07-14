@@ -21,17 +21,16 @@ body{
     cursor:pointer;
 }
 
-/* CARTA (imagem) */
 .carta{
     position:absolute;
     left:50%;
-    bottom:40px;
+    bottom:15px;
     transform:translateX(-50%);
     width:250px;
-    transition:1s ease;
-    z-index:1;
+    height:auto;
     border-radius:8px;
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    transition:.8s;
+    z-index:2;
 }
 
 /* ENVELOPE */
