@@ -10,25 +10,25 @@ envelope.addEventListener("click", () => {
 
         envelope.classList.add("open");
 
-        texto.innerHTML = "Espero que você goste 🌻";
+        texto.textContent = "Espero que você goste 🌻";
 
         setTimeout(() => {
             letter.style.transform = "translateY(-220px)";
-            letter.style.opacity = "1";
         }, 700);
 
         aberto = true;
 
     } else {
 
-        letter.style.transform = "translateY(0px)";
+        letter.style.transform = "translateY(0)";
 
         setTimeout(() => {
             envelope.classList.remove("open");
-            texto.innerHTML = "Clique no envelope";
+            texto.textContent = "Clique no envelope";
         }, 400);
 
         aberto = false;
+
     }
 
 });
