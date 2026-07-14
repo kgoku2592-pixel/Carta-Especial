@@ -5,35 +5,22 @@ const decoracao = document.getElementById("decoracao");
 
 let aberto = false;
 
-// 🌻 Criar girassóis aleatórios
-for (let i = 0; i < 20; i++) {
+// 🌻 Criar até 15 girassóis aleatórios
+for (let i = 0; i < 15; i++) {
 
     const flor = document.createElement("div");
-    flor.innerHTML = "🌻";
-    flor.className = "flor";
+    flor.classList.add("flor");
+    flor.textContent = "🌻";
 
-    flor.style.left = Math.random() * 100 + "vw";
-    flor.style.top = Math.random() * 100 + "vh";
+    flor.style.left = Math.random() * 95 + "%";
+    flor.style.top = Math.random() * 95 + "%";
 
-    flor.style.fontSize = (25 + Math.random() * 35) + "px";
+    flor.style.fontSize = (28 + Math.random() * 18) + "px";
 
-    flor.style.animationDuration = (4 + Math.random() * 5) + "s";
+    flor.style.animationDelay = (Math.random() * 5) + "s";
+    flor.style.animationDuration = (5 + Math.random() * 4) + "s";
 
     decoracao.appendChild(flor);
 }
 
-// ✨ Criar brilhos
-for (let i = 0; i < 30; i++) {
-
-    const brilho = document.createElement("div");
-    brilho.className = "brilho";
-
-    brilho.style.left = Math.random() * 100 + "vw";
-    brilho.style.top = Math.random() * 100 + "vh";
-
-    brilho.style.animationDelay = (Math.random() * 3) + "s";
-
-    decoracao.appendChild(brilho);
-}
-
-// 📩
+// ✨ Criar
