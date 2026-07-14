@@ -1,571 +1,181 @@
-/* ==========================
-   RESET
-========================== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
 body{
-    width:100%;
     height:100vh;
     overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#f4e5bf;
-    font-family:'Cinzel', serif;
-    position:relative;
+    background:linear-gradient(180deg,#FFF9EF,#F6E8C8,#EFD8A7);
+    font-family:'Cormorant Garamond',serif;
 }
-/==========================
-   FUNDO
-========================== */
 
 .background{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at top,#fff9ea 0%,transparent 40%),
-    linear-gradient(135deg,#f9efd8,#e8d0a3,#d6b57c);
-    z-index:-5;
+    radial-gradient(circle at top,#fff8e8 0%,transparent 50%),
+    radial-gradient(circle at bottom,#f7df9a 0%,transparent 60%);
+    z-index:-3;
 }
 
-.background::before{
-    content:"";
-    position:absolute;
+#decoracao{
+    position:fixed;
     inset:0;
-    background-image:
-    repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 12px,
-        rgba(255,255,255,.04) 13px
-    );
-    opacity:.35;
-}
-
-/* ==========================
-   BRILHO
-========================== */
-
-.sparkles{
-    position:absolute;
-    inset:0;
+    overflow:hidden;
     pointer-events:none;
+    z-index:-1;
 }
 
-.sparkles::before,
-.sparkles::after{
-
-    content:"";
-
+.flor{
     position:absolute;
+    animation:girar infinite ease-in-out;
+    opacity:.85;
+    filter:drop-shadow(0 0 8px rgba(255,196,0,.35));
+}
 
-    width:300px;
-
-    height:300px;
-
+.brilho{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#fff7b8;
     border-radius:50%;
-
-    filter:blur(70px);
-
-    animation:glow 8s infinite alternate;
-
+    box-shadow:0 0 12px gold;
+    animation:piscar 2s infinite;
 }
-
-.sparkles::before{
-
-    top:-100px;
-
-    left:-100px;
-
-    background:rgba(255,255,180,.25);
-
-}
-
-.sparkles::after{
-
-    right:-120px;
-
-    bottom:-120px;
-
-    background:rgba(255,220,120,.18);
-
-}
-
-/* ==========================
-   GIRASSÓIS
-========================== */
-
-.sunflower{
-
-    position:absolute;
-
-    font-size:65px;
-
-    user-select:none;
-
-    animation:flowerFloat 6s ease-in-out infinite;
-
-    filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));
-
-}
-.sf1{
-    top:10px;
-    left:10px;
-}
-
-.sf2{
-    top:10px;
-    right:10px;
-}
-
-.sf3{
-    bottom:10px;
-    left:10px;
-}
-
-.sf4{
-    bottom:10px;
-    right:10px;
-   .sf5{top:15%;left:8%;font-size:40px;}
-.sf6{top:35%;right:12%;font-size:50px;}
-.sf7{top:55%;left:20%;font-size:35px;}
-.sf8{bottom:18%;right:15%;font-size:45px;}
-.sf9{top:75%;left:55%;font-size:38px;}
-.sf10{top:22%;left:72%;font-size:42px;}
-}
-
-/* ==========================
-   CONTAINER
-========================== */
 
 .container{
-    position:relative;
-    width:390px;
-    height:540px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin:auto;
-}
-
-/* ==========================
-   ENVELOPE
-========================== */
-
-.envelope{
-
-    position:absolute;
-
-    width:420px;
-
-    height:300px;
-
-    border-radius:10px;
-
-    overflow:hidden;
-
-    background:#ead7ad;
-
-    box-shadow:
-
-    0 25px 45px rgba(0,0,0,.28),
-
-    inset 0 0 25px rgba(255,255,255,.4);
-
-    z-index:10;
-
-}
-
-/* textura */
-
-.envelope::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background-image:
-
-    repeating-linear-gradient(
-
-        45deg,
-
-        rgba(255,255,255,.05),
-
-        rgba(255,255,255,.05) 2px,
-
-        transparent 2px,
-
-        transparent 8px
-
-    );
-
-    opacity:.4;
-
-}
-
-/* frente */
-
-.front{
-
-    position:absolute;
-
-    width:100%;
-
-    height:100%;
-
-    background:linear-gradient(
-
-    to bottom,
-
-    #ead8af,
-
-    #dfc592
-
-    );
-
-}
-/* ==========================
-   ABA DO ENVELOPE
-========================== */
-
-.flap{
-    position:absolute;
-    width:100%;
-    height:130px;
-    background:linear-gradient(
-        to bottom,
-        #e6cf9c,
-        #cfb27a
-    );
-    clip-path:polygon(0 0,100% 0,50% 100%);
-    transform-origin:top;
-    transition:1.2s ease;
-    z-index:30;
-    box-shadow:0 8px 15px rgba(0,0,0,.15);
-}
-
-.flap::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        rgba(255,255,255,.25),
-        transparent
-    );
-}
-
-/* ==========================
-   COROA
-========================== */
-
-.crown{
-    position:absolute;
-    left:50%;
-    top:15px;
-    transform:translateX(-50%);
-    font-size:38px;
-    filter:
-        drop-shadow(0 2px 2px rgba(0,0,0,.2))
-        drop-shadow(0 0 8px gold);
-    animation:crownGlow 2.5s infinite alternate;
-}
-
-/* ==========================
-   SELO DE CERA
-========================== */
-
-.seal{
-    position:absolute;
-    left:50%;
-    top:92px;
-    transform:translateX(-50%);
-    width:78px;
-    height:78px;
-    border-radius:50%;
-    background:
-        radial-gradient(circle at top,#d83b45,#8b0913);
-    border:5px solid #7a0810;
-    cursor:pointer;
-    z-index:40;
-    transition:.5s;
-    box-shadow:
-        0 6px 15px rgba(0,0,0,.35),
-        inset 0 3px 5px rgba(255,255,255,.25);
-}
-
-.seal::before{
-    content:"k";
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    color:#fff;
-    font-size:28px;
-}
-
-.seal:hover{
-    transform:translateX(-50%) scale(1.08);
-}
-
-/* ==========================
-   CARTA
-========================== */
-.carta{
-    position:absolute;
-    left:50%;
-    bottom:90px;
-
-    width:85%;
-    max-width:340px;
-
-    opacity:0;
-
-    transform:translateX(-50%) translateY(120px) scale(.8);
-
-    transition:1.2s ease;
-
+    text-align:center;
     z-index:5;
 }
 
+h1{
+    font-family:'Cinzel',serif;
+    font-size:42px;
+    color:#7b5719;
+    margin-bottom:35px;
+}
 
-/* ==========================
-   ABRIR ENVELOPE
-========================== */
+.envelope{
+    position:relative;
+    width:370px;
+    height:250px;
+    margin:auto;
+    cursor:pointer;
+    perspective:1200px;
+}
 
-.aberto .flap{
+.back{
+    position:absolute;
+    inset:0;
+    background:#d8b48a;
+    border-radius:12px;
+}
+
+.front{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:100%;
+    background:#c89355;
+    clip-path:polygon(0 100%,50% 45%,100% 100%);
+    z-index:4;
+}
+
+.flap{
+    position:absolute;
+    top:0;
+    width:100%;
+    height:125px;
+    background:#e7c79d;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:1s;
+    z-index:6;
+}
+
+.letter{
+    position:absolute;
+    left:15px;
+    bottom:15px;
+    width:340px;
+    background:white;
+    border-radius:12px;
+    padding:12px;
+    transition:1s ease;
+    box-shadow:0 15px 30px rgba(0,0,0,.25);
+    z-index:2;
+}
+
+.letter img{
+    width:100%;
+    display:block;
+    border-radius:10px;
+}
+.envelope.open .flap{
     transform:rotateX(180deg);
 }
 
-.aberto .seal{
-    opacity:0;
-    transform:translateX(-50%) scale(0);
+.clique{
+    margin-top:25px;
+    font-size:20px;
+    color:#7b5719;
+    font-weight:600;
+    animation:pulse 2s infinite;
 }
 
-..aberto .carta{
-    opacity:1;
-    transform:translateX(-50%) translateY(-150px) scale(1.2);
-    z-index:60;
-}
-}
-/* ==========================================
-   PARTE 3 - ANIMAÇÕES E DETALHES
-========================================== */
-
-/* Envelope mais elegante */
-
-.envelope{
-    transition:1s ease;
+@keyframes pulse{
+    50%{
+        opacity:.5;
+    }
 }
 
-.envelope:hover{
-    transform:translateY(-5px);
+@keyframes girar{
+    0%{
+        transform:rotate(-8deg) scale(1);
+    }
+    50%{
+        transform:rotate(8deg) scale(1.08);
+    }
+    100%{
+        transform:rotate(-8deg) scale(1);
+    }
 }
 
-/* Carta */
-
-.carta{
-
-    max-width:90%;
-
-    object-fit:contain;
-
-    transform-origin:center;
-
+@keyframes piscar{
+    0%,100%{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.4);
+    }
 }
-
-.carta:hover{
-
-    transform:scale(1.02);
-
-}
-
-/* Brilho passando */
-
-.envelope::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:-120%;
-
-    left:-40%;
-
-    width:60%;
-
-    height:350%;
-
-    background:rgba(255,255,255,.18);
-
-    transform:rotate(25deg);
-
-    animation:shine 6s linear infinite;
-
-}
-
-/* Girassóis */
-
-.sunflower{
-
-    transition
-    /* ==========================================
-   PARTE 4 - EFEITOS EXTRAS E RESPONSIVIDADE
-========================================== */
-
-/* Movimento suave dos girassóis */
-
-.sunflower{
-    transition:.4s ease;
-}
-
-.sunflower:hover{
-    transform:scale(1.15) rotate(10deg);
-    filter:
-        drop-shadow(0 0 18px rgba(255,215,0,.7))
-        drop-shadow(0 8px 15px rgba(0,0,0,.25));
-}
-
-/* Fundo com leve movimento */
-
-.background{
-    animation:backgroundMove 18s ease-in-out infinite alternate;
-}
-
-/* Carta acima de tudo quando aberta */
-
-.aberto .carta{
-    animation:letterFloat 3.5s ease-in-out infinite;
-}
-
-/* Pequeno efeito de clique */
-
-.seal:active{
-    transform:translateX(-50%) scale(.92);
-}
-
-/* Seleção desativada */
-
-.envelope,
-.carta,
-.sunflower,
-.seal,
-.crown{
-    user-select:none;
-    -webkit-user-select:none;
-}
-
-/* Responsividade */
 
 @media (max-width:480px){
 
-    .container{
-        transform:scale(.82);
+    h1{
+        font-size:34px;
     }
 
-    body{
-        overflow:hidden;
+    .envelope{
+        width:340px;
+        height:230px;
     }
 
-    .sunflower{
-        font-size:52px;
+    .letter{
+        width:310px;
+        left:15px;
+        bottom:12px;
     }
 
-}
-
-/* ==========================
-   KEYFRAMES
-========================== */
-
-@keyframes backgroundMove{
-
-    0%{
-        background-position:0% 0%;
-    }
-
-    100%{
-        background-position:100% 100%;
-    }
-
-}
-
-@keyframes letterFloat{
-
-    0%{
-        transform:translateY(-170px) scale(1);
-    }
-
-    50%{
-        transform:translateY(-180px) scale(1.02);
-    }
-
-    100%{
-        transform:translateY(-170px) scale(1);
-    }
-
-}
-
-@keyframes shine{
-
-    0%{
-        top:-140%;
-        left:-50%;
-    }
-
-    100%{
-        top:140%;
-        left:120%;
-    }
-
-}
-
-@keyframes glow{
-
-    from{
-        transform:scale(1);
-        opacity:.4;
-    }
-
-    to{
-        transform:scale(1.25);
-        opacity:.75;
-    }
-
-}
-
-@keyframes flowerFloat{
-
-    0%,100%{
-        transform:translateY(0) rotate(-2deg);
-    }
-
-    50%{
-        transform:translateY(-10px) rotate(2deg);
-    }
-
-}
-
-@keyframes crownGlow{
-
-    from{
-        filter:
-            drop-shadow(0 0 5px gold)
-            drop-shadow(0 0 12px rgba(255,215,0,.4));
-    }
-
-    to{
-        filter:
-            drop-shadow(0 0 12px gold)
-            drop-shadow(0 0 25px rgba(255,215,0,.8));
+    .clique{
+        font-size:18px;
     }
 
 }
