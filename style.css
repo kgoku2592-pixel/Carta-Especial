@@ -133,6 +133,12 @@ body{
 .sf4{
     bottom:10px;
     right:10px;
+   .sf5{top:15%;left:8%;font-size:40px;}
+.sf6{top:35%;right:12%;font-size:50px;}
+.sf7{top:55%;left:20%;font-size:35px;}
+.sf8{bottom:18%;right:15%;font-size:45px;}
+.sf9{top:75%;left:55%;font-size:38px;}
+.sf10{top:22%;left:72%;font-size:42px;}
 }
 
 /* ==========================
@@ -140,20 +146,13 @@ body{
 ========================== */
 
 .container{
-
     position:relative;
-
     width:390px;
-
     height:540px;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-   
-   transform: translateY(20px);
+    margin:auto;
 }
 
 /* ==========================
@@ -321,18 +320,23 @@ body{
 /* ==========================
    CARTA
 ========================== */
-
 .carta{
     position:absolute;
-    width:500px;
-    max-width:90vw;
     left:50%;
     bottom:90px;
+
+    width:85%;
+    max-width:340px;
+
     opacity:0;
-    transform:translateX(-50%) translateY(120px) scale(.85);
-    transition:1.3s ease;
+
+    transform:translateX(-50%) translateY(120px) scale(.8);
+
+    transition:1.2s ease;
+
     z-index:5;
 }
+
 
 /* ==========================
    ABRIR ENVELOPE
@@ -347,11 +351,11 @@ body{
     transform:translateX(-50%) scale(0);
 }
 
-.aberto .carta{
+..aberto .carta{
     opacity:1;
-    transform:translateX(-50%) translateY(-120px) scale(1.15);
+    transform:translateX(-50%) translateY(-150px) scale(1.2);
     z-index:60;
-    pointer-events:auto;
+}
 }
 /* ==========================================
    PARTE 3 - ANIMAÇÕES E DETALHES
