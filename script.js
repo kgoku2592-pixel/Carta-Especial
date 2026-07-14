@@ -1,32 +1,39 @@
-// ==========================
-// ELEMENTOS
-// ==========================
-
-const container = document.querySelector(".container");
-const seal = document.getElementById("seal");
+const envelope = document.getElementById("envelope");
+const letter = document.querySelector(".letter");
+const texto = document.querySelector(".clique");
+const decoracao = document.getElementById("decoracao");
 
 let aberto = false;
 
-// ==========================
-// ABRIR ENVELOPE
-// ==========================
+// 🌻 Criar girassóis aleatórios
+for (let i = 0; i < 20; i++) {
 
-seal.addEventListener("click", () => {
+    const flor = document.createElement("div");
+    flor.innerHTML = "🌻";
+    flor.className = "flor";
 
-    if (aberto) return;
+    flor.style.left = Math.random() * 100 + "vw";
+    flor.style.top = Math.random() * 100 + "vh";
 
-    aberto = true;
+    flor.style.fontSize = (25 + Math.random() * 35) + "px";
 
-    container.classList.add("aberto");
+    flor.style.animationDuration = (4 + Math.random() * 5) + "s";
 
-});
+    decoracao.appendChild(flor);
+}
 
-// ==========================
-// IMPEDIR ARRASTAR A IMAGEM
-// ==========================
+// ✨ Criar brilhos
+for (let i = 0; i < 30; i++) {
 
-const carta = document.getElementById("carta");
+    const brilho = document.createElement("div");
+    brilho.className = "brilho";
 
-carta.addEventListener("dragstart", (e) => {
-    e.preventDefault();
-});
+    brilho.style.left = Math.random() * 100 + "vw";
+    brilho.style.top = Math.random() * 100 + "vh";
+
+    brilho.style.animationDelay = (Math.random() * 3) + "s";
+
+    decoracao.appendChild(brilho);
+}
+
+// 📩
