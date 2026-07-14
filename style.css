@@ -153,7 +153,7 @@ body{
 
     align-items:center;
    
-   transform: translateY(50px);
+   transform: translateY(30px);
 }
 
 /* ==========================
@@ -324,11 +324,9 @@ body{
 
 .carta{
     position:absolute;
-    left:50%;
     width:500px;
     max-width:90vw;
-    border-radius:12px;
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
+    left:50%;
     bottom:90px;
     opacity:0;
     transform:translateX(-50%) translateY(120px) scale(.85);
@@ -351,11 +349,9 @@ body{
 
 .aberto .carta{
     opacity:1;
-    transform:translateY(-50%) scale(1);
+    transform:translateX(-50%) translateY(-120px) scale(1.15);
     z-index:60;
-    width:90vw;
-    max-width:600px;
-    animation:cartaAparecer 1.5s ease forwards;
+    pointer-events:auto;
 }
 /* ==========================================
    PARTE 3 - ANIMAÇÕES E DETALHES
