@@ -5,84 +5,172 @@
 }
 
 body{
-    background:linear-gradient(to bottom,#fdf7ec,#f6ead3);
+    font-family:'Cormorant Garamond',serif;
+    background:linear-gradient(180deg,#f8f2e7,#efe2c7);
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:Georgia,serif;
     overflow:hidden;
 }
 
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at center,#fffdf8,#efe2c7);
+    z-index:-2;
+}
+
 .container{
+    text-align:center;
+}
+
+h1{
+    font-family:'Cinzel',serif;
+    color:#7d5c32;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#8c6d43;
+    font-size:20px;
+    margin-bottom:35px;
+}
+
+.click{
+    margin-top:30px;
+    color:#7d5c32;
+    font-size:20px;
+    animation:pulse 2s infinite;
+}
+
+.message{
+    margin-top:15px;
+    color:#86663a;
+    opacity:0;
+    transition:.6s;
+}
+
+.sunflower{
+    position:absolute;
+    font-size:52px;
+    animation:float 5s ease-in-out infinite;
+    user-select:none;
+}
+
+.s1{
+    top:30px;
+    left:30px;
+}
+
+.s2{
+    top:30px;
+    right:30px;
+}
+
+.s3{
+    bottom:30px;
+    left:30px;
+}
+
+.s4{
+    bottom:30px;
+    right:30px;
+}
+
+.envelope{
+    width:380px;
+    height:260px;
     position:relative;
-    width:340px;
-    height:450px;
+    margin:auto;
     cursor:pointer;
 }
 
-.carta{
+.front{
     position:absolute;
-    left:50%;
-    bottom:15px;
-    transform:translateX(-50%);
-    width:250px;
-    height:auto;
-    border-radius:8px;
-    transition:.8s;
+    bottom:0;
+    width:100%;
+    height:180px;
+    background:#d4af7f;
+    clip-path:polygon(0 100%,50% 40%,100% 100%);
+    border-radius:0 0 12px 12px;
+    z-index:5;
+}
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:140px;
+    background:#e2c59d;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:1s;
+    z-index:8;
+}
+
+.letter{
+    position:absolute;
+    left:20px;
+    top:25px;
+    width:340px;
+    background:white;
+    border-radius:12px;
+    padding:10px;
+    transition:1.2s;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
     z-index:2;
 }
 
-/* ENVELOPE */
-.envelope{
-    position:absolute;
-    bottom:0;
-    left:0;
+.carta{
     width:100%;
-    height:220px;
+    display:block;
+    border-radius:8px;
 }
 
-/* Parte da frente */
-.frente{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:220px;
-    background:#e5c791;
-    border:3px solid #b88b3a;
-    border-radius:0 0 8px 8px;
-    z-index:3;
-}
-
-/* Tampa */
-.tampa{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:120px;
-    background:#edd9b0;
-    clip-path:polygon(0 0,100% 0,50% 100%);
-    transform-origin:top;
-    transition:.8s;
-    z-index:4;
-}
-
-/* Abrir tampa */
-.container.abrir .tampa{
+.envelope.open .flap{
     transform:rotateX(180deg);
 }
 
-/* Carta sobe */
-.container.abrir .carta{
-    transform:translate(-50%,-180px);
+.envelope.open .letter{
+    transform:translateY(-240px) scale(1.25);
 }
 
-.info{
-    position:absolute;
-    bottom:-45px;
-    width:100%;
-    text-align:center;
-    color:#8b6b36;
-    font-size:16px;
+.envelope.open + .click + .message{
+    opacity:1;
+}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(-5deg);}
+    50%{transform:translateY(-10px) rotate(5deg);}
+    100%{transform:translateY(0) rotate(-5deg);}
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.5;
+    }
+}
+
+@media(max-width:480px){
+
+.envelope{
+    width:320px;
+    height:220px;
+}
+
+.letter{
+    width:285px;
+    left:18px;
+}
+
+h1{
+    font-size:34px;
+}
+
+.subtitle{
+    font-size:18px;
+}
+
 }
