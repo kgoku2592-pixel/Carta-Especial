@@ -1,34 +1,176 @@
-const envelope = document.getElementById("envelope");
-const letter = document.querySelector(".letter");
-const texto = document.querySelector(".clique");
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-let aberto = false;
+body{
+    font-family:'Cormorant Garamond',serif;
+    background:linear-gradient(180deg,#f8f2e7,#efe2c7);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
 
-envelope.addEventListener("click", () => {
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at center,#fffdf8,#efe2c7);
+    z-index:-2;
+}
 
-    if (!aberto) {
+.container{
+    text-align:center;
+}
 
-        envelope.classList.add("open");
+h1{
+    font-family:'Cinzel',serif;
+    color:#7d5c32;
+    font-size:42px;
+    margin-bottom:10px;
+}
 
-        texto.textContent = "Espero que você goste 🌻";
+.subtitle{
+    color:#8c6d43;
+    font-size:20px;
+    margin-bottom:35px;
+}
 
-        setTimeout(() => {
-            letter.style.transform = "translateY(-220px)";
-        }, 700);
+.click{
+    margin-top:30px;
+    color:#7d5c32;
+    font-size:20px;
+    animation:pulse 2s infinite;
+}
 
-        aberto = true;
+.message{
+    margin-top:15px;
+    color:#86663a;
+    opacity:0;
+    transition:.6s;
+}
 
-    } else {
+.sunflower{
+    position:absolute;
+    font-size:52px;
+    animation:float 5s ease-in-out infinite;
+    user-select:none;
+}
 
-        letter.style.transform = "translateY(0)";
+.s1{
+    top:30px;
+    left:30px;
+}
 
-        setTimeout(() => {
-            envelope.classList.remove("open");
-            texto.textContent = "Clique no envelope";
-        }, 400);
+.s2{
+    top:30px;
+    right:30px;
+}
 
-        aberto = false;
+.s3{
+    bottom:30px;
+    left:30px;
+}
+
+.s4{
+    bottom:30px;
+    right:30px;
+}
+
+.envelope{
+    width:380px;
+    height:260px;
+    position:relative;
+    margin:auto;
+    cursor:pointer;
+}
+
+.front{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:180px;
+    background:#d4af7f;
+    clip-path:polygon(0 100%,50% 40%,100% 100%);
+    border-radius:0 0 12px 12px;
+    z-index:5;
+}
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:140px;
+    background:#e2c59d;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:1s;
+    z-index:8;
+}
+
+.letter{
+    position:absolute;
+    left:20px;
+    top:25px;
+    width:340px;
+    background:white;
+    border-radius:12px;
+    padding:10px;
+    transition:1.2s;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    z-index:2;
+}
+
+.carta{
+    width:100%;
+    display:block;
+    border-radius:8px;
+}
+
+.envelope.open .flap{
+    transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+    transform:translateY(-240px) scale(1.25);
+}
+
+.envelope.open + .click + .message{
+    opacity:1;
+}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(-5deg);}
+    50%{transform:translateY(-10px) rotate(5deg);}
+    100%{transform:translateY(0) rotate(-5deg);}
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.5;
+    }
+}
+
+@media(max-width:480px){
+
+.envelope{
+    width:320px;
+    height:220px;
+}
+
+.letter{
+    width:285px;
+    left:18px;
+}
+
+h1{
+    font-size:34px;
+}
+
+.subtitle{
+    font-size:18px;
+}
 
     }
-
-});
