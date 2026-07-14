@@ -347,6 +347,8 @@ body{
     transform:translateY(120px) scale(.85);
     transition:1.3s ease;
     z-index:5;
+
+    pointer-events:none;
 }
 
 /* ==========================
