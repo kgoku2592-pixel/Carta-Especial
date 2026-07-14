@@ -9,25 +9,18 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-direction:column;
     background:linear-gradient(to bottom,#fdf8ef,#f7edd9);
-    overflow:hidden;
     font-family:'Cormorant Garamond',serif;
-}
-
-.background{
-    position:fixed;
-    inset:0;
-    background:radial-gradient(circle,#fffdf7,#f5ead3);
-    z-index:-2;
+    overflow:hidden;
 }
 
 .container{
-    text-align:center;
     position:relative;
+    text-align:center;
 }
 
 h1{
-    font-family:'Cinzel',serif;
     font-size:42px;
     color:#7a5a2a;
     margin-bottom:10px;
@@ -36,9 +29,36 @@ h1{
 .subtitulo{
     font-size:20px;
     color:#8b6f47;
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
-.clique{
-    margin-top:25px;
-    font-size:18
+.envelope{
+    position:relative;
+    width:320px;
+    height:220px;
+    margin:auto;
+    cursor:pointer;
+}
+
+/* Parte de baixo do envelope */
+.base{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#d9b87c;
+    border-radius:8px;
+    z-index:3;
+}
+
+/* Tampa */
+.flap{
+    .flap{
+    position:absolute;
+    width:100%;
+    height:110px;
+    background:#e8c98f;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:.8s;
+    z-index:5;
+    }
