@@ -115,5 +115,39 @@ h1{
     .carta{
         max-width:320px;
     }
+.girassol{
+    position:fixed;
+    font-size:35px;
+    z-index:1000;
+    animation:girar 6s linear infinite;
+}
 
+.canto1{
+    top:15px;
+    left:15px;
+}
+
+.canto2{
+    top:15px;
+    right:15px;
+}
+
+.canto3{
+    bottom:15px;
+    left:15px;
+}
+
+.canto4{
+    bottom:15px;
+    right:15px;
+}
+
+@keyframes girar{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
 }
