@@ -1,6 +1,5 @@
 const envelope = document.getElementById("envelope");
-const carta = document.querySelector(".carta");
-const mensagem = document.querySelector(".message");
+const mensagem = document.querySelector(".mensagem");
 const clique = document.querySelector(".click");
 
 let aberto = false;
@@ -9,18 +8,22 @@ envelope.addEventListener("click", () => {
 
     if (!aberto) {
 
-        envelope.classList.add("aberto");
-        carta.classList.add("mostrar");
-        mensagem.classList.add("mostrar");
+        envelope.classList.add("open");
+
         clique.style.opacity = "0";
+
+        setTimeout(() => {
+            mensagem.classList.add("show");
+        }, 700);
 
         aberto = true;
 
     } else {
 
-        envelope.classList.remove("aberto");
-        carta.classList.remove("mostrar");
-        mensagem.classList.remove("mostrar");
+        envelope.classList.remove("open");
+
+        mensagem.classList.remove("show");
+
         clique.style.opacity = "1";
 
         aberto = false;
