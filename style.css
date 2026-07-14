@@ -1,161 +1,202 @@
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:Georgia, serif;
-    background:linear-gradient(180deg,#fdf7ed,#f4e4c8);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+font-family:'Cormorant Garamond',serif;
+background:linear-gradient(180deg,#fcf8ef,#efe1c4);
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-h1{
-    color:#7a5529;
-    margin-bottom:10px;
-    font-size:38px;
-}
-
-.subtitulo{
-    color:#8b6b42;
-    margin-bottom:35px;
-    text-align:center;
-    width:85%;
-    max-width:500px;
+.background{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#fffef9,#efe1c4);
+z-index:-3;
 }
 
 .container{
-    position:relative;
+text-align:center;
+}
+
+h1{
+color:#76532c;
+font-size:42px;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#8d6b3c;
+font-size:20px;
+margin-bottom:35px;
 }
 
 .envelope{
-    width:380px;
-    height:250px;
-    position:relative;
-    cursor:pointer;
+position:relative;
+width:460px;
+height:320px;
+margin:auto;
+cursor:pointer;
+perspective:1200px;
 }
 
-.corpo{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:#d4af7a;
-    clip-path:polygon(0 100%,0 35%,50% 70%,100% 35%,100% 100%);
-    border-radius:0 0 12px 12px;
-    z-index:2;
-    box-shadow:0 15px 30px rgba(0,0,0,.25);
+.front{
+position:absolute;
+bottom:0;
+width:100%;
+height:230px;
+background:#d6b07b;
+clip-path:polygon(0 100%,50% 45%,100% 100%);
+border-radius:0 0 15px 15px;
+z-index:5;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-.tampa{
-    position:absolute;
-    width:100%;
-    height:52%;
-    background:#e6c899;
-    clip-path:polygon(0 0,100% 0,50% 100%);
-    transform-origin:top;
-    transition:1s;
-    z-index:4;
+.top{
+position:absolute;
+width:100%;
+height:170px;
+background:#e6c899;
+clip-path:polygon(0 0,100% 0,50% 100%);
+transform-origin:top;
+transition:1s;
+z-index:8;
 }
 
-.carta-box{
-    position:absolute;
-    width:75%;
-    left:12.5%;
-    top:20px;
-    transition:1.2s;
-    z-index:1;
+.letter{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+top:35px;
+width:340px;
+transition:1.2s;
+z-index:2;
 }
 
 .carta{
-    width: 90%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
+width:100%;
+border-radius:12px;
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+display:block;
+}
+.envelope.open .top{
+transform:rotateX(180deg);
 }
 
-.envelope.aberto .tampa{
-    transform:rotateX(180deg);
-}
-
-.envelope.aberto .carta-box{
-    transform:translateY(-230px) scale(1.25);
+.envelope.open .letter{
+transform:translateX(-50%) translateY(-270px) scale(1.35);
+z-index:20;
 }
 
 .click{
-    text-align:center;
-    margin-top:25px;
-    color:#7a5529;
-    font-size:20px;
-    transition:.5s;
+margin-top:30px;
+font-size:22px;
+color:#7a5a31;
+animation:pulse 2s infinite;
+transition:.5s;
 }
 
-.message{
-    margin-top:20px;
-    color:#6d4d22;
-    opacity:0;
-    transition:1s;
-    font-size:22px;
+.mensagem{
+margin-top:20px;
+font-size:24px;
+color:#6d4d22;
+opacity:0;
+transition:1s;
 }
 
-.message.mostrar{
-    opacity:1;
+.mensagem.show{
+opacity:1;
 }
 
 .girassol{
-    position:absolute;
-    font-size:55px;
-    animation:girar 5s ease-in-out infinite;
+position:fixed;
+font-size:60px;
+animation:balancar 4s ease-in-out infinite;
+user-select:none;
 }
 
 .g1{
-    top:20px;
-    left:20px;
+top:20px;
+left:20px;
 }
 
 .g2{
-    top:20px;
-    right:20px;
+top:20px;
+right:20px;
 }
 
 .g3{
-    bottom:20px;
-    left:20px;
+bottom:20px;
+left:20px;
 }
 
 .g4{
-    bottom:20px;
-    right:20px;
+bottom:20px;
+right:20px;
 }
 
-@keyframes girar{
-    0%{transform:rotate(-8deg);}
-    50%{transform:rotate(8deg);}
-    100%{transform:rotate(-8deg);}
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+}
+
+@keyframes balancar{
+0%{transform:rotate(-8deg);}
+50%{transform:rotate(8deg);}
+100%{transform:rotate(-8deg);}
 }
 
 @media(max-width:600px){
 
 .envelope{
-    width:320px;
-    height:210px;
+width:360px;
+height:260px;
 }
 
-.envelope.aberto .carta-box{
-    transform:translateY(-190px) scale(1.15);
+.front{
+height:190px;
+}
+
+.top{
+height:140px;
+}
+
+.letter{
+width:270px;
+top:28px;
+}
+
+.envelope.open .letter{
+transform:translateX(-50%) translateY(-220px) scale(1.2);
 }
 
 h1{
-    font-size:30px;
+font-size:32px;
 }
 
-.subtitulo{
-    font-size:17px;
+.subtitle{
+font-size:18px;
+padding:0 20px;
+}
+
+.click{
+font-size:18px;
+}
+
+.mensagem{
+font-size:20px;
+}
+
+.girassol{
+font-size:42px;
 }
 
 }
